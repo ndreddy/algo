@@ -29,7 +29,7 @@ import static org.junit.Assert.assertTrue;
  * We iterate through each character in the input string, keeping track of the characters we’ve seen an odd number of
  * times using a hash set unpairedCharacters.
  */
-public class PermutationPalindrome {
+public class PalindromePermutation {
 
     /**
      * Simple palidrome check using "keep two pointers" pattern
@@ -79,9 +79,12 @@ public class PermutationPalindrome {
         assertTrue(isPermutaionsPalindrome("civic"));
         assertTrue(isPermutaionsPalindrome("ivicc"));
 
+        assertTrue(isPermutaionsPalindrome("Rats live on no evil star"));
+
         // Negatives
         assertFalse(isPermutaionsPalindrome("civil"));
         assertFalse(isPermutaionsPalindrome("livci"));
+
     }
 
     @Test
@@ -98,6 +101,6 @@ public class PermutationPalindrome {
 
     public static void main(String[] args) {
 
-        System.out.printf("PermutationPalindrome : %s", isPalindrome("civic"));
+        System.out.printf("PalindromePermutation : %s", isPalindrome("civic"));
     }
 }
