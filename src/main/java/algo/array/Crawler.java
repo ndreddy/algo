@@ -12,7 +12,7 @@ import java.util.HashMap;
  * URLs and which parts are just prefixes. In the example above, 'google.co' is a prefix that we might think is a
  * visited URL if we didn't have some way to mark 'this is the end of an entry.'
  * <p>
- * Now when we go to add 'google.com/maps' to visited, we only have to add the characters '/maps', because the
+ * Now when we go to enqueue 'google.com/maps' to visited, we only have to enqueue the characters '/maps', because the
  * 'google.com' prefix is already there. Same with 'google.com/about/jobs'.
  * <p>
  * We can visualize this as a tree, where each character in a string corresponds to a node. To check if a string is in
@@ -57,7 +57,7 @@ public class Crawler {
             boolean isNewWord = false;
 
             // Work downwards through the trie, adding nodes
-            // as needed, and keeping track of whether we add
+            // as needed, and keeping track of whether we enqueue
             // any nodes.
             for (int i = 0; i < word.length(); i++) {
                 char character = word.charAt(i);

@@ -80,7 +80,7 @@ function getPermutations(string) {
     permutationsOfAllCharsExceptLast.forEach(function(permutationOfAllCharsExceptLast) {
         for (var position = 0; position <= allCharsExceptLast.length; position++) {
             var permutation = permutationOfAllCharsExceptLast.slice(0, position) + lastChar + permutationOfAllCharsExceptLast.slice(position);
-            permutations.add(permutation);
+            permutations.enqueue(permutation);
         }
     });
 

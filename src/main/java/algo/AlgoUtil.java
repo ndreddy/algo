@@ -1,5 +1,7 @@
 package algo;
 
+import algo.linkedlist.LinkedListNode;
+
 /**
  * Created by ndreddy on 29/08/17.
  */
@@ -50,6 +52,39 @@ public class AlgoUtil {
         return array;
     }
 
+
+    public static LinkedListNode randomLinkedList(int N, int min, int max) {
+        LinkedListNode root = new LinkedListNode(randomIntInRange(min, max),
+                null, null);
+        LinkedListNode prev = root;
+        for (int i = 1; i < N; i++) {
+            int data = randomIntInRange(min, max);
+            LinkedListNode next = new LinkedListNode(data, null, null);
+            prev.setNext(next);
+            prev = next;
+        }
+        return root;
+    }
+
+    public static LinkedListNode linkedListWithValue(int N, int value) {
+        LinkedListNode root = new LinkedListNode(value, null, null);
+        LinkedListNode prev = root;
+        for (int i = 1; i < N; i++) {
+            LinkedListNode next = new LinkedListNode(value, null, null);
+            prev.setNext(next);
+            prev = next;
+        }
+        return root;
+    }
+
+    public static LinkedListNode createLinkedListFromArray(int[] vals) {
+        LinkedListNode head = new LinkedListNode(vals[0], null, null);
+        LinkedListNode current = head;
+        for (int i = 1; i < vals.length; i++) {
+            current = new LinkedListNode(vals[i], null, current);
+        }
+        return head;
+    }
 
 
     public static String arrayToString(int[] array) {

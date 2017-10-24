@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by ndreddy on 22/08/17.
  */
-public class LoopInALinkedList {
+public class RemoveLoopInALinkedList {
 
     public boolean containsLoop (LinkedListNode firstNode) {
 
@@ -69,35 +69,34 @@ public class LoopInALinkedList {
     /**
      * Detects and removes loop
      *
-     * @param firstNode
+     * @param head
      */
-    public void detectAndRemoveLoop(LinkedListNode firstNode) {
-        LinkedListNode slowRunner = firstNode;
-        LinkedListNode fastRunner = firstNode;
+    public void detectAndRemoveLoop(LinkedListNode head) {
+        LinkedListNode slow = head;
+        LinkedListNode fast = head;
 
-        while (fastRunner != null && fastRunner.next !=null){
-            slowRunner = slowRunner.next;
-            fastRunner = fastRunner.next.next;
-            if(slowRunner == fastRunner) {
+        while (fast != null && fast.next !=null){
+            slow = slow.next;
+            fast = fast.next.next; // moves at 2x speed
+            if(slow == fast) {
                 break;
             }
         }
 
         // Error check: there is not meeting point so no loop
-        if(fastRunner.next == null) {
+        if(fast.next == null) {
             return;
         }
 
-        // Move slowRunner to head
-        slowRunner = firstNode;
-        while (slowRunner.next != fastRunner.next){
-            slowRunner = slowRunner.next;
-            fastRunner = fastRunner.next;
+        // Move slow to head
+        slow = head;
+        while (slow.next != fast.next){
+            slow = slow.next;
+            fast = fast.next;
         }
 
-        // This is the starting of loop, remove it.
-        fastRunner.next = null;
-
+        // This is the starting of loop, dequeue it.
+        fast.next = null;
     }
 
 
@@ -125,13 +124,13 @@ public class LoopInALinkedList {
 
     void print(LinkedListNode node) {
         if(containsLoop(node)) {
-            System.out.println("Loop exist at " + findLoopBeginning(node).value);
+            System.out.println("Loop exist at " + findLoopBeginning(node).data);
             return;
         }
 
         System.out.print("LinkedList = ");
         while (node != null) {
-            System.out.print( node.value + " -> " );
+            System.out.print( node.data + " -> " );
             node = node.next;
         }
     }

@@ -12,16 +12,18 @@ public class ReverseALinkedList {
 
     public LinkedListNode reverse(LinkedListNode head) {
 
-        LinkedListNode currrent = head;
+        LinkedListNode curr = head;
         LinkedListNode next;
         LinkedListNode prev = null;
 
-        while (currrent != null) {
-            next = currrent.next;
-            currrent.next = prev;
-            prev = currrent;
-            currrent = next;
+        while (curr != null) {
+            next = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr = next;
         }
+
+        // head is prev because curr = null
         return prev;
     }
 
@@ -32,13 +34,13 @@ public class ReverseALinkedList {
         LinkedListNode c = new LinkedListNode(3, b);
 
         LinkedListNode rv = reverse(c);
-        assertTrue("reverse incorrect", rv.value == 1);
+        assertTrue("reverse incorrect", rv.data == 1);
     }
 
     @Test
     public void testReverseEdgeCase1() {
         LinkedListNode a = new LinkedListNode(1, null);
         LinkedListNode rv = reverse(a);
-        assertTrue("reverse incorrect", rv.value == 1);
+        assertTrue("reverse incorrect", rv.data == 1);
     }
 }

@@ -9,7 +9,7 @@ import static org.junit.Assert.assertTrue;
 
 /**
  * Created by ndreddy on 23/08/17.
- * Write code to remove duplicates from an unsorted linked list.
+ * Write code to dequeue duplicates from an unsorted linked list.
  * How would you solve this problem if a temporary buffer is not allowed?
  */
 public class RemoveDupsInALinkedList {
@@ -22,27 +22,66 @@ public class RemoveDupsInALinkedList {
 
         Set<Integer> set = new HashSet<>();
         while (curr != null) {
-            if(set.contains(curr.value)){
+            if (set.contains(curr.data)) {
                 prev.next = curr.next;
             } else {
-                set.add(curr.value);
+                set.add(curr.data);
                 prev = curr;
             }
             curr = curr.next;
         }
     }
 
+    /**
+     * Removes duplicates in LinkedList without using a buffer (HashSet/HashTable)
+     * Without a buffer, we can iterate with two pointers: “current” does a normal iteration, while “runner” iterates
+     * through all prior nodes to check for dups. Runner will only see one dup per node, because if there were multiple
+     * duplicates they would have been removed already.
+     *
+     * @param head
+     */
+    public static void removeDupsWithoutBuffer(LinkedListNode head) {
+        LinkedListNode slow = head;
+        LinkedListNode fast;
+
+        while (slow != null) {
+            /* Remove all future nodes that have the same data */
+            fast = slow;
+            while (fast.next != null) {
+                if (fast.next.data == slow.data) {
+                    fast.next = fast.next.next;
+                } else {
+                    fast = fast.next;
+                }
+            }
+            slow = slow.next;
+        }
+    }
 
     @Test
-    public  void  testDups() throws Exception {
+    public void testDups() throws Exception {
         LinkedListNode head = new LinkedListNode(3);
         head.next = new LinkedListNode(5);
-        head.next.next =  new LinkedListNode(3);
+        head.next.next = new LinkedListNode(3);
         head.next.next.next = new LinkedListNode(1);
 
-        assertTrue(head.next.next.value == 3);
+        assertTrue(head.next.next.data == 3);
         removeDups(head);
-        assertTrue(head.next.next.value == 1);
+        removeDupsWithoutBuffer(head);
+        assertTrue(head.next.next.data == 1);
+
+    }
+
+    @Test
+    public void testDupsWithoutBuffer() throws Exception {
+        LinkedListNode head = new LinkedListNode(3);
+        head.next = new LinkedListNode(5);
+        head.next.next = new LinkedListNode(3);
+        head.next.next.next = new LinkedListNode(1);
+
+        assertTrue(head.next.next.data == 3);
+        removeDupsWithoutBuffer(head);
+        assertTrue(head.next.next.data == 1);
 
     }
 

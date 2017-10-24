@@ -143,7 +143,7 @@ public class FindDuplicateInt {
 
     /**
      * Complexity time - O(3n), Space O(1)
-     * list.contains - O(n), list.remove - O(n)
+     * list.contains - O(n), list.dequeue - O(n)
      * @param list
      * @return
      */

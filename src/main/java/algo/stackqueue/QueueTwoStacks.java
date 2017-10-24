@@ -1,4 +1,4 @@
-package algo.stack;
+package algo.stackqueue;
 
 import org.junit.Test;
 
@@ -6,6 +6,14 @@ import java.util.NoSuchElementException;
 import java.util.Stack;
 
 import static org.junit.Assert.assertTrue;
+
+/**
+ * Implement a queue with 2 stacks. Your queue should have an enqueue and a dequeue function and it should be
+ * "first in first out" (FIFO). Optimize for the time cost of m function calls on your queue. These can be any mix
+ * of enqueue and dequeue calls.
+ * <p>
+ * Assume you already have a stack implementation and it gives O(1)O(1) time push and pop.
+ */
 
 public class QueueTwoStacks {
 
@@ -36,7 +44,7 @@ public class QueueTwoStacks {
 
 
     @Test
-    public  void testDequeue() throws Exception {
+    public void testDequeue() throws Exception {
         QueueTwoStacks queue = new QueueTwoStacks();
         queue.enqueue(5);
         queue.enqueue(4);
