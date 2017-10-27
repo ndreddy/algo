@@ -1,4 +1,4 @@
-package algo.binarysearch;
+package algo.search;
 
 import org.junit.Test;
 
@@ -34,40 +34,40 @@ public class FindDuplicateInt {
 
 
     public int findRepeatnln(int [] arr) {
-        int l = 0;
-        int h = arr.length -1;
+        int floor = 0;
+        int ceil = arr.length -1;
 
-        while (l < h) {
+        while (floor < ceil) {
 
 
-            // divide our range 1..n into an upper range and lower range
+            // divide our range 1..n into right and left
             // (such that they don't overlap)
-            // lower range is floor..midpoint
-            // upper range is midpoint+1..ceiling
-            int mid = l + ((h-l) / 2);
+            // left is floor..midpoint
+            // right is midpoint+1..ceiling
+            int mid = floor + ((ceil-floor) / 2);
 
-            int expectedItems = h - mid  ; // Distinct Possible Ints In Right
+            int expectedItems = ceil - mid  ; // Distinct Possible Ints In Right
 
             // Find actual elements in right
             int actualItems = 0;
             for (int num : arr) {
-                if( num > mid && num <= h) {
+                if( num > mid && num <= ceil) {
                     actualItems ++;
                 }
             }
 
             if(actualItems > expectedItems){
                 // go right
-                l = mid + 1;
+                floor = mid + 1;
             } else {
                 // go left
-                h = mid;
+                ceil = mid;
             }
         }
 
         // l and h have converged
         // we found a number that repeats!
-        return l;
+        return floor;
     }
 
     @Test
