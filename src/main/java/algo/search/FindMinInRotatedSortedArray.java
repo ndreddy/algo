@@ -16,7 +16,7 @@ import static org.junit.Assert.assertEquals;
  * If there is no previous element element, then there is no rotation (first element is minimum)
  *
  */
-public class RotatedSortedArray {
+public class FindMinInRotatedSortedArray {
 
 
     /**
@@ -26,19 +26,20 @@ public class RotatedSortedArray {
      */
     int findMin(int [] arr) {
 
-        int l = 0;              // index of first
-        int h = arr.length -1;   // index of last
+        int l = 0;              // index of left/first
+        int r = arr.length -1;   // index of right/last
+        int m; // mid index
 
         // always restrict the search to the unsorted sub-array.
         // The min is always there.
-        while ( arr[l] > arr[h]) {
-            int mid = (l+h)/2; // find mid
-            if(arr[mid] > arr[h]) {
+        while ( arr[l] > arr[r]) {
+            m = (l+r)/2; // find mid
+            if(arr[m] > arr[r]) {
                 // go right
-                l = mid +1;
+                l = m +1;
             } else {
                 // go left
-                h = mid;
+                r = m;
             }
         }
 

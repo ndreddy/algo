@@ -68,21 +68,22 @@ public class FindRotationPoint {
     public int findRotationPoint(String[] arr) {
 //        final String firstWord = arr[0];
 
-        int l = 0;
-        int h = arr.length - 1;
+        int l = 0;      // left inded
+        int r = arr.length - 1; // right index
+        int m; // mid index
 
-        while (arr[l].compareTo(arr[h]) > 0) {
+        while (arr[l].compareTo(arr[r]) > 0) {
 
             // guess a point halfway between floor and ceiling
-            int mid = (l + h ) / 2;
+             m = (l + r ) / 2;
 
             // if guess comes after first word or is the first word
-            if (arr[mid].compareTo(arr[h]) > 0) {
+            if (arr[m].compareTo(arr[r]) > 0) {
                 // go right
-                l = mid +1 ;
+                l = m + 1 ;
             } else {
                 // go left
-                h = mid;
+                r = m;
             }
         }
 
