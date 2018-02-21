@@ -1,4 +1,4 @@
-package algo.string;
+package algo.arraysandstrings;
 
 /**
  * Created by ndreddy on 28/08/17.
@@ -30,7 +30,7 @@ public class AnagramPermutation {
             }
         }
 
-        return true; // letters array has no negative values, and therefore no positive values either
+        return true; // letters arraysandstrings has no negative values, and therefore no positive values either
     }
 
     public static void main(String[] args) {

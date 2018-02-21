@@ -6,7 +6,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 
 /**
- * Group Anagrams: Write a method to sort an array of strings so that all the anagrams are next to
+ * Group Anagrams: Write a method to sort an arraysandstrings of strings so that all the anagrams are next to
  * each other.
  */
 public class GroupAnagarams {

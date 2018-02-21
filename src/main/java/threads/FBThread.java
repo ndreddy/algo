@@ -13,11 +13,10 @@ import java.util.function.Predicate;
  */
 public class FBThread extends Thread {
     private static Object lock = new Object();
-    protected static int current = 1;
+    protected static int count = 1;
     private int max;
     private Predicate<Integer> validate;
     private Function<Integer, String> printer;
-    int x = 1;
 
     public FBThread(Predicate<Integer> validate, Function<Integer, String> printer, int max) {
         this.validate = validate;
@@ -28,12 +27,12 @@ public class FBThread extends Thread {
     public void run() {
         while (true) {
             synchronized (lock) {
-                if (current > max) {
+                if (count > max) {
                     return;
                 }
-                if (validate.test(current)) {
-                    System.out.println(printer.apply(current));
-                    current++;
+                if (validate.test(count)) {
+                    System.out.println(printer.apply(count));
+                    count++;
                 }
             }
         }
@@ -41,13 +40,12 @@ public class FBThread extends Thread {
 
 
     public static void main(String[] args) {
-        int n = 100;
-        Thread[] threads = {new FBThread(i -> i % 3 == 0 && i % 5 == 0, i -> "FizzBuzz", n),
-                new FBThread(i -> i % 3 == 0 && i % 5 != 0, i -> "Fizz", n),
-                new FBThread(i -> i % 3 != 0 && i % 5 == 0, i -> "Buzz", n),
-                new FBThread(i -> i % 3 != 0 && i % 5 != 0, i -> Integer.toString(i), n)};
-        for (Thread thread : threads) {
-            thread.start();
-        }
+        int n = 15;
+
+        new FBThread(i -> i % 3 == 0 && i % 5 == 0, i -> "FizzBuzz", n).start();
+        new FBThread(i -> i % 3 == 0 && i % 5 != 0, i -> "Fizz", n).start();
+        new FBThread(i -> i % 3 != 0 && i % 5 == 0, i -> "Buzz", n).start();
+        new FBThread(i -> i % 3 != 0 && i % 5 != 0, i -> Integer.toString(i), n).start();
+
     }
 }

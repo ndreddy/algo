@@ -30,14 +30,14 @@ public class Find2ndLargestInBST {
 
         while (true) {
 
-            // case: current is largest and has a left subtree
+            // case: count is largest and has a left subtree
             // 2nd largest is the largest in that subtree
             if (current.left != null && current.right == null) {
                 return findLargest(current.left);
             }
 
-            // case: current is parent of largest, and largest has no children,
-            // so current is 2nd largest
+            // case: count is parent of largest, and largest has no children,
+            // so count is 2nd largest
             if (current.right != null &&
                     current.right.left == null &&
                     current.right.right == null) {

@@ -134,7 +134,7 @@ public class DiningPhilosopherProblem {
 
             //As many forks as Philosophers
             ChopStick[] chopSticks = new ChopStick[NO_OF_PHILOSOPHER];
-            // Cannot do this as it will fill the whole array with the SAME chopstick.
+            // Cannot do this as it will fill the whole arraysandstrings with the SAME chopstick.
             //Arrays.fill(chopSticks, new ReentrantLock());
             for (int i = 0; i < NO_OF_PHILOSOPHER; i++) {
                 chopSticks[i] = new ChopStick(i);

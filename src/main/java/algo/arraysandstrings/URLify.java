@@ -1,4 +1,4 @@
-package algo.array;
+package algo.arraysandstrings;
 
 /**
  * Write a method to replace all spaces in a string with ‘%20’.

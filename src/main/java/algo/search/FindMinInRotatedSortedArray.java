@@ -6,10 +6,10 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Created by ndreddy on 06/04/17.
- * A sorted array has been rotated so that the elements might appear in the order 3 4 5 6 7 1 2.
+ * A sorted arraysandstrings has been rotated so that the elements might appear in the order 3 4 5 6 7 1 2.
  * How would you find the minimum element?
  * <p>
- * A simple solution is to traverse the complete array and find minimum. This solution requires Θ(n) time.
+ * A simple solution is to traverse the complete arraysandstrings and find minimum. This solution requires Θ(n) time.
  * We can do it in O(Logn) using Binary Search
  *
  * The minimum element is the only element whose previous is greater than it.
@@ -30,7 +30,7 @@ public class FindMinInRotatedSortedArray {
         int r = arr.length -1;   // index of right/last
         int m; // mid index
 
-        // always restrict the search to the unsorted sub-array.
+        // always restrict the search to the unsorted sub-arraysandstrings.
         // The min is always there.
         while ( arr[l] > arr[r]) {
             m = (l+r)/2; // find mid
@@ -73,7 +73,7 @@ public class FindMinInRotatedSortedArray {
         int h = arr.length -1;   // index of last
         int mid = h;
 
-        // always restrict the search to the unsorted sub-array.
+        // always restrict the search to the unsorted sub-arraysandstrings.
         // The min is always there.
         while ( arr[l] > arr[h]) {
             mid = (l+h)/2; // find mid

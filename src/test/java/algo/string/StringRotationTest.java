@@ -1,5 +1,6 @@
 package algo.string;
 
+import algo.arraysandstrings.StringRotation;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

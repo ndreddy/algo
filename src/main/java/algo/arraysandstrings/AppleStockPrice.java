@@ -1,4 +1,4 @@
-package algo.array;
+package algo.arraysandstrings;
 
 
 import org.junit.Assert;

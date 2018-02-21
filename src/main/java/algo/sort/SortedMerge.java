@@ -9,17 +9,17 @@ import algo.AlgoUtil;
 public class SortedMerge {
 
     /**
-     * Merges array
+     * Merges arraysandstrings
      *
-     * @param a     first array
-     * @param b     second array
+     * @param a     first arraysandstrings
+     * @param b     second arraysandstrings
      * @param lastA number of "real" elements in a
      * @param lastB number of "real" elements in b
      */
     public static void merge(int[] a, int[] b, int lastA, int lastB) {
-        int indexMerged = lastB + lastA - 1; /* Index of last location of merged array */
-        int indexA = lastA - 1; /* Index of last element in array b */
-        int indexB = lastB - 1; /* Index of last element in array a */
+        int indexMerged = lastB + lastA - 1; /* Index of last location of merged arraysandstrings */
+        int indexA = lastA - 1; /* Index of last element in arraysandstrings b */
+        int indexB = lastB - 1; /* Index of last element in arraysandstrings a */
 
 		/* Merge a and b, starting from the last element in each */
         while (indexB >= 0) {

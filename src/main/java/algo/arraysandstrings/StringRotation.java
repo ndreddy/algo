@@ -1,4 +1,4 @@
-package algo.string;
+package algo.arraysandstrings;
 
 /**
  * Assume you have a method isSubstring which checks if one word is a substring of

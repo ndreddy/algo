@@ -1,4 +1,4 @@
-package algo.array;
+package algo.arraysandstrings;
 
 import algo.AlgoUtil;
 
@@ -115,7 +115,7 @@ public class ZeroMatrix {
             }
         }
 
-        // Check for zeros in the rest of the array
+        // Check for zeros in the rest of the arraysandstrings
         for (int i = 1; i < matrix.length; i++) {
             for (int j = 1; j < matrix[0].length; j++) {
                 if (matrix[i][j] == 0) {

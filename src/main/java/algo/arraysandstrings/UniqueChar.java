@@ -1,4 +1,4 @@
-package algo.string;
+package algo.arraysandstrings;
 
 /**
  * Created by ndreddy on 28/08/17.
