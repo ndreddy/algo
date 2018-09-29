@@ -19,20 +19,19 @@ public class RotateMatrix {
             for (int i = first; i < last; i++) {
                 int offset = i - first;
                 int j = last - offset;
-                int top = m[first][i]; // save top
+                int top = m[first][i]; // save top left
 
-                // left -> top
-
+                // bottom left -> top left
                 m[first][i] = m[j][first];
 
-                // bottom -> left
+                // bottom right -> bottom left
                 m[j][first] = m[last][j];
 
-                // right -> bottom
+                // top right -> bottom right
                 m[last][j] = m[i][last];
 
-                // top -> right
-                m[i][last] = top; // right <- saved top
+                // top left -> top right
+                m[i][last] = top;
             }
         }
         return true;

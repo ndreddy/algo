@@ -12,7 +12,7 @@ import static org.junit.Assert.assertTrue;
  * Write code to dequeue duplicates from an unsorted linked list.
  * How would you solve this problem if a temporary buffer is not allowed?
  */
-public class RemoveDupsInALinkedList {
+public class RemoveDups {
 
 
     public void removeDups(LinkedListNode head) {
@@ -21,12 +21,15 @@ public class RemoveDupsInALinkedList {
         LinkedListNode prev = null;
 
         Set<Integer> set = new HashSet<>();
+
+//        a -> b -> a -> c
         while (curr != null) {
-            if (set.contains(curr.data)) {
-                prev.next = curr.next;
-            } else {
+            // If set does not contain, add and preserve it ref.
+            if (!set.contains(curr.data)) {
                 set.add(curr.data);
                 prev = curr;
+            } else {
+                prev.next = curr.next;
             }
             curr = curr.next;
         }
@@ -74,6 +77,7 @@ public class RemoveDupsInALinkedList {
 
     @Test
     public void testDupsWithoutBuffer() throws Exception {
+       
         LinkedListNode head = new LinkedListNode(3);
         head.next = new LinkedListNode(5);
         head.next.next = new LinkedListNode(3);

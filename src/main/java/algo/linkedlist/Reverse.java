@@ -7,7 +7,7 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by ndreddy on 20/04/17.
  */
-public class ReverseALinkedList {
+public class Reverse {
 
 
     public LinkedListNode reverse(LinkedListNode head) {

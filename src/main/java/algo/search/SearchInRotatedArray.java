@@ -1,12 +1,12 @@
 package algo.search;
 
 /**
- * 10.3 Search in Rotated Array: Given a sorted arraysandstrings of n integers that has been rotated an unknown
- number of times, write code to find an element in the arraysandstrings. You may assume that the arraysandstrings was
+ * 10.3 Search in Rotated Array: Given a sorted arrays of n integers that has been rotated an unknown
+ number of times, write code to find an element in the arrays. You may assume that the array was
  originally sorted in increasing order.
  EXAMPLE
  InputfindSin {15, 16, 19, 20, 25, 1, 3,4,5,7,10, 14}
- Output 8 (the index of 5 in the arraysandstrings)
+ Output 8 (the index of 5 in the arrays)
  */
 public class SearchInRotatedArray {
 
@@ -17,7 +17,7 @@ public class SearchInRotatedArray {
 
     public static int search(int a[], int l, int r, int x) {
         int m = (l + r) / 2;
-        if (x == a[m]) { // Found element
+        if (a[m] == x) { // Found element
             return m;
         }
         if (r < l) {

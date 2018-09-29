@@ -6,7 +6,7 @@ import static org.junit.Assert.assertEquals;
 
 /**
  * Created by ndreddy on 13/04/17.
- *
+ * <p>
  * I have a list of words that are mostly alphabetical, except they start somewhere in the middle of the alphabet,
  * reach the end, and then start from the beginning of the alphabet. In other words, this is an alphabetically ordered
  * list that has been "rotated." For example:
@@ -44,25 +44,26 @@ import static org.junit.Assert.assertEquals;
  */
 public class FindRotationPoint {
     /**
-     Complexity
-     O(\lg{n})O(lgn) time and O(1)O(1) space, just like binary search.
-
-     We're assuming that our word lengths are bound by some constant—if they were bounded by a non-constant ll, each of our string comparisons would cost O(l)O(l), for a total of O(l*\lg{n})O(l∗lgn) runtime.
-
-     Bonus
-     This function assumes that the arraysandstrings is rotated. If it isn't, what index will it return? How can we fix our function to return 0 for an unrotated arraysandstrings?
-
-     What We Learned
-     The answer was a modified version of binary search.
-
-     This is a great example of the difference between "knowing" something and knowing something. You might have seen binary search before, but that doesn't help you much unless you've learned the lessons of binary search.
-
-     Binary search teaches us that when an arraysandstrings is sorted or mostly sorted:
-
-     The value at a given index tells us a lot about what's to the left and what's to the right.
-     We don't have to look at every item in the arraysandstrings. By inspecting the middle item, we can "rule out" half of the arraysandstrings.
-     We can use this approach over and over, cutting the problem in half until we have the answer. This is sometimes called "divide and conquer."
-     So whenever you know an arraysandstrings is sorted or almost sorted, think about these lessons from binary search and see if they apply.
+     * Complexity
+     * O(\lg{n})O(lgn) time and O(1)O(1) space, just like binary search.
+     * <p>
+     * We're assuming that our word lengths are bound by some constant—if they were bounded by a non-constant ll, each of our string comparisons would cost O(l)O(l), for a total of O(l*\lg{n})O(l∗lgn) runtime.
+     * <p>
+     * Bonus
+     * This function assumes that the array is rotated. If it isn't, what index will it return?
+     * How can we fix our function to return 0 for an unrotated array?
+     * <p>
+     * What We Learned
+     * The answer was a modified version of binary search.
+     * <p>
+     * This is a great example of the difference between "knowing" something and knowing something. You might have seen binary search before, but that doesn't help you much unless you've learned the lessons of binary search.
+     * <p>
+     * Binary search teaches us that when an array is sorted or mostly sorted:
+     * <p>
+     * The value at a given index tells us a lot about what's to the left and what's to the right.
+     * We don't have to look at every item in the array. By inspecting the middle item, we can "rule out" half of the array.
+     * We can use this approach over and over, cutting the problem in half until we have the answer. This is sometimes called "divide and conquer."
+     * So whenever you know an array is sorted or almost sorted, think about these lessons from binary search and see if they apply.
      */
 
     public int findRotationPoint(String[] arr) {
@@ -75,12 +76,12 @@ public class FindRotationPoint {
         while (arr[l].compareTo(arr[r]) > 0) {
 
             // guess a point halfway between floor and ceiling
-             m = (l + r ) / 2;
+            m = (l + r) / 2;
 
             // if guess comes after first word or is the first word
             if (arr[m].compareTo(arr[r]) > 0) {
                 // go right
-                l = m + 1 ;
+                l = m + 1;
             } else {
                 // go left
                 r = m;
@@ -91,27 +92,26 @@ public class FindRotationPoint {
     }
 
 
-
     @Test
     public void testFindRotationPoint() {
 
-       String [] words = { "ptolemaic", "retrograde", "supplant", "undulate", "xenoepist", "asymptote", "babka",
-               "banoffee", "engender", "karpatka", "othellolagkage" };
-        assertEquals(5,findRotationPoint(words));
+        String[] words = {"ptolemaic", "retrograde", "supplant", "undulate", "xenoepist", "asymptote", "babka",
+                "banoffee", "engender", "karpatka", "othellolagkage"};
+        assertEquals(5, findRotationPoint(words));
     }
 
     @Test
     public void testNoRotationPoint() {
 
-        String [] words = { "ptolemaic", "retrograde", "supplant", "undulate", "xenoepist" };
-        assertEquals(0,findRotationPoint(words));
+        String[] words = {"ptolemaic", "retrograde", "supplant", "undulate", "xenoepist"};
+        assertEquals(0, findRotationPoint(words));
     }
 
     @Test
     public void testOnePoint() {
 
-        String [] words = { "ptolemaic" };
-        assertEquals(0,findRotationPoint(words));
+        String[] words = {"ptolemaic"};
+        assertEquals(0, findRotationPoint(words));
     }
 
 

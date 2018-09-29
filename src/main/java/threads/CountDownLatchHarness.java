@@ -19,19 +19,16 @@ public class CountDownLatchHarness {
         final CountDownLatch startGate = new CountDownLatch(1);
         final CountDownLatch endGate = new CountDownLatch(nThreads);
         for (int i = 0; i < nThreads; i++) {
-            Thread t = new Thread() {
-                public void run() {
+            new Thread(() -> {
+                try {
+                    startGate.await();
                     try {
-                        startGate.await();
-                        try {
-                            task.run();
-                        } finally {
-                            endGate.countDown();
-                        }
-                    } catch (InterruptedException ignored) { }
-                }
-            };
-            t.start();
+                        task.run();
+                    } finally {
+                        endGate.countDown();
+                    }
+                } catch (InterruptedException ignored) { }
+            }).start();
         }
         long start = System.nanoTime();
         startGate.countDown();

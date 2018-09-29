@@ -9,13 +9,9 @@ public class BinarySearch {
 
         while (l <= r) {
             m = (l + r) / 2;
-            if (a[m] < x) {
-                l = m + 1;
-            } else if (a[m] > x) {
-                r = m - 1;
-            } else {
-                return m;
-            }
+            if(a[m] == x) return m;
+            if (a[m] < x) l = m + 1; // go right
+            else r = m - 1; // go left
         }
         return -1;
     }
@@ -23,32 +19,32 @@ public class BinarySearch {
     public static int binarySearchRecursive(int[] a, int x, int l, int r) {
         if (l > r) return -1; // Error
 
-        int mid = (l + r) / 2;
-        if (a[mid] < x) {
-            return binarySearchRecursive(a, x, mid + 1, r);
-        } else if (a[mid] > x) {
-            return binarySearchRecursive(a, x, l, mid - 1);
+        int m = (l + r) / 2;
+        if (a[m] < x) {
+            return binarySearchRecursive(a, x, m + 1, r);
+        } else if (a[m] > x) {
+            return binarySearchRecursive(a, x, l, m - 1);
         } else {
-            return mid;
+            return m;
         }
     }
 
     // Recursive algorithm to return the closest element
-    public static int binarySearchRecursiveClosest(int[] a, int x, int low, int high) {
-        if (low > high) { // high is on the left side now
-            if (high < 0) return low;
-            if (low >= a.length) return high;
-            if (x - a[high] < a[low] - x) {
-                return high;
+    public static int binarySearchRecursiveClosest(int[] a, int x, int l, int r) {
+        if (l > r) { // high is on the left side now
+            if (r < 0) return l;
+            if (l >= a.length) return r;
+            if (x - a[r] < a[l] - x) {
+                return r;
             }
-            return low;
+            return l;
         }
 
-        int mid = (low + high) / 2;
+        int mid = (l + r) / 2;
         if (a[mid] < x) {
-            return binarySearchRecursiveClosest(a, x, mid + 1, high);
+            return binarySearchRecursiveClosest(a, x, mid + 1, r);
         } else if (a[mid] > x) {
-            return binarySearchRecursiveClosest(a, x, low, mid - 1);
+            return binarySearchRecursiveClosest(a, x, l, mid - 1);
         } else {
             return mid;
         }

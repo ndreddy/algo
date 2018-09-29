@@ -3,7 +3,7 @@ package algo.linkedlist;
 /**
  * Created by ndreddy on 05/09/17.
  */
-public class IntersectionLinkedList {
+public class Intersection {
 
     public static class Result {
         public LinkedListNode tail;

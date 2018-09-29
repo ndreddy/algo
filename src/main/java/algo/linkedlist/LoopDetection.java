@@ -7,7 +7,42 @@ import static org.junit.Assert.assertTrue;
 /**
  * Created by ndreddy on 22/08/17.
  */
-public class RemoveLoopInALinkedList {
+public class LoopDetection {
+
+
+    /**
+     * Detects and removes loop
+     *
+     * @param head
+     */
+    public void detectAndRemoveLoop(LinkedListNode head) {
+        LinkedListNode slow = head;
+        LinkedListNode fast = head;
+
+        while (fast != null && fast.next !=null){
+            slow = slow.next;
+            fast = fast.next.next; // moves at 2x speed
+            if(slow == fast) {
+                break;
+            }
+        }
+
+        // Error check: there is not meeting point so no loop
+        if(fast.next == null) {
+            return;
+        }
+
+        // Move slow to head
+        slow = head;
+        while (slow.next != fast.next){
+            slow = slow.next;
+            fast = fast.next;
+        }
+
+        // This is the starting of loop, dequeue it.
+        fast.next = null;
+    }
+
 
     public boolean containsLoop (LinkedListNode firstNode) {
 
@@ -66,38 +101,7 @@ public class RemoveLoopInALinkedList {
         return fastRunner;
     }
 
-    /**
-     * Detects and removes loop
-     *
-     * @param head
-     */
-    public void detectAndRemoveLoop(LinkedListNode head) {
-        LinkedListNode slow = head;
-        LinkedListNode fast = head;
 
-        while (fast != null && fast.next !=null){
-            slow = slow.next;
-            fast = fast.next.next; // moves at 2x speed
-            if(slow == fast) {
-                break;
-            }
-        }
-
-        // Error check: there is not meeting point so no loop
-        if(fast.next == null) {
-            return;
-        }
-
-        // Move slow to head
-        slow = head;
-        while (slow.next != fast.next){
-            slow = slow.next;
-            fast = fast.next;
-        }
-
-        // This is the starting of loop, dequeue it.
-        fast.next = null;
-    }
 
 
 

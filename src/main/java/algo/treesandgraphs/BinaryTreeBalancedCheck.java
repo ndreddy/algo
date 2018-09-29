@@ -1,4 +1,4 @@
-package algo.tree;
+package algo.treesandgraphs;
 
 import java.util.List;
 import java.util.ArrayList;

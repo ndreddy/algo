@@ -47,33 +47,23 @@ public class MyBlockingQueue<T> {
        final MyBlockingQueue<String> bq = new MyBlockingQueue<>(10);
 
        // producer thread
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    for (int i =0; i<20; i++) {
-                        bq.put("hello world");
-                        System.out.println(Thread.currentThread().getId() + "Put: hello world " + i);
-                    }
-                } catch (InterruptedException e) {
-
+        new Thread(() -> {
+            try {
+                for (int i =0; i<20; i++) {
+                    bq.put("hello world");
+                    System.out.println(Thread.currentThread().getId() + "Put: hello world " + i);
                 }
-            }
+            } catch (InterruptedException e) { }
         }).start();
 
         // consumer thread
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    while (true) {
-                        String str = bq.take();
-                        System.out.println(Thread.currentThread().getId() + "Take:" + str);
-                    }
-                } catch (InterruptedException e) {
-
+        new Thread(() -> {
+            try {
+                while (true) {
+                    String str = bq.take();
+                    System.out.println(Thread.currentThread().getId() + "Take:" + str);
                 }
-            }
+            } catch (InterruptedException e) { }
         }).start();
 
     }

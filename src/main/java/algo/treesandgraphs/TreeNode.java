@@ -1,4 +1,4 @@
-package algo.tree;
+package algo.treesandgraphs;
 
 /*
  * One node of a binary tree. The data element stored is a single
@@ -94,6 +94,7 @@ public class TreeNode {
         n.setRightChild(createMinimalBST(arr, mid + 1, end));
         return n;
     }
+
 
     public static TreeNode createMinimalBST(int array[]) {
         return createMinimalBST(array, 0, array.length - 1);

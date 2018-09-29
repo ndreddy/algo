@@ -1,4 +1,4 @@
-package algo.tree;
+package algo.treesandgraphs;
 
 import java.util.Stack;
 
@@ -29,27 +29,25 @@ public class BinarySearchTreeCheck {
 
     /* returns true if given search tree is binary
      search tree (efficient version) */
-    boolean isBST() {
-        return isBSTUtil(root, Integer.MIN_VALUE,
+    boolean checkBST() {
+        return checkBST(root, Integer.MIN_VALUE,
                 Integer.MAX_VALUE);
     }
 
     /* Returns true if the given tree is a BST and its
       values are >= min and <= max. */
-    boolean isBSTUtil(Node node, int min, int max) {
-        /* an empty tree is BST */
-        if (node == null)
-            return true;
+    boolean checkBST(Node n, int min, int max) {
+        /* Constraint 1: an empty tree is BST */
+        if (n == null) return true;
 
-        /* false if this node violates the min/max constraints */
-        if (node.data < min || node.data > max)
-            return false;
+        /* Constraint 2: false if this node violates the min/max constraints */
+        if (n.data < min || n.data > max) return false;
 
         /* otherwise check the subtrees recursively
         tightening the min/max constraints */
         // Allow only distinct values
-        return (isBSTUtil(node.left, min, node.data - 1) &&
-                isBSTUtil(node.right, node.data + 1, max));
+        return (checkBST(n.left, min, n.data - 1) &&
+                checkBST(n.right, n.data + 1, max));
     }
 
 
@@ -110,7 +108,7 @@ public class BinarySearchTreeCheck {
         tree.root.left.left = new Node(1);
         tree.root.left.right = new Node(3);
 
-        if (tree.isBST())
+        if (tree.checkBST())
             System.out.println("IS BST");
         else
             System.out.println("Not a BST");

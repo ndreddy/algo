@@ -11,20 +11,30 @@ package algo.arraysandstrings;
  * pale, bae -) false
  */
 public class OneEditAway {
-    public static boolean oneEditReplace(String s1, String s2) {
+
+    public static boolean isOneEditAway(String s1, String s2) {
+        if (s1.length() == s2.length()) {
+            return isOneUpdateAway(s1, s2);
+        } else if (s1.length() + 1 == s2.length()) {
+            return isOneInsertAway(s1, s2);
+        } else if (s1.length() - 1 == s2.length()) {
+            return isOneInsertAway(s2, s1);
+        }
+        return false;
+    }
+
+    public static boolean isOneUpdateAway(String s1, String s2) {
         boolean diff = false;
         for (int i = 0; i < s1.length(); i++) {
             if (s1.charAt(i) != s2.charAt(i)) {
-                if (diff) {
-                    return false;
-                }
+                if (diff) return false;
                 diff = true;
             }
         }
         return true;
     }
 
-    public static boolean oneEditInsertMine(String s1, String s2) {
+    public static boolean isOneInsertAway(String s1, String s2) {
         int i = 0; // index1 for s1
         boolean diff = false;
 
@@ -58,21 +68,11 @@ public class OneEditAway {
         return true;
     }
 
-    public static boolean oneEditAway(String first, String second) {
-        if (first.length() == second.length()) {
-            return oneEditReplace(first, second);
-        } else if (first.length() + 1 == second.length()) {
-            return oneEditInsertMine(first, second);
-        } else if (first.length() - 1 == second.length()) {
-            return oneEditInsertMine(second, first);
-        }
-        return false;
-    }
 
     public static void main(String[] args) {
         String a = "aple";
         String b = "applle";
-        boolean isOneEdit = oneEditAway(a, b);
+        boolean isOneEdit = isOneEditAway(a, b);
         System.out.println(a + ", " + b + ": " + isOneEdit);
     }
 

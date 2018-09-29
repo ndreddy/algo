@@ -38,28 +38,18 @@ public class MailboxBlockingQueue {
         final MailboxBlockingQueue mb = new MailboxBlockingQueue(10);
 
         // 2. Create a Producer and Consumer threads
-        Thread t1 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                for (int i = 0; i < 20; i++) {
-                    mb.put("Hello World " + i);
-                }
+        new Thread(() -> {
+            for (int i = 0; i < 20; i++) {
+                mb.put("Hello World " + i);
             }
-        });
+        }).start();
 
         // consumer tread call take() interface
-        Thread t2 = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                while (true) {
-                    mb.take();
-                }
+        new Thread(() -> {
+            while (true) {
+                mb.take();
             }
-        });
-
-        // 3. Start the threads
-        t1.start();
-        t2.start();
+        }).start();
 
     }
 

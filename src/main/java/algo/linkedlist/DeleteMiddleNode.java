@@ -9,13 +9,16 @@ import static org.junit.Assert.assertTrue;
  * Delete a node from a singly-linked list, given only a variable pointing to that node.
  * we don't know where the head of the list is—we only have a reference to the node we want to delete.
  */
-public class DeleteMiddleNodeWithoutHead {
+public class DeleteMiddleNode {
 
     public static boolean deleteMiddleNode(LinkedListNode n) {
+
+        // Not possible to delete if node is the last node
         if (n == null || n.next == null) {
             return false; // Failure
         }
 
+        // Copy next nodes data and link
         n.data = n.next.data;
         n.next = n.next.next;
         return true;
