@@ -16,47 +16,43 @@ public class LoopDetection {
      * @param head
      */
     public void detectAndRemoveLoop(LinkedListNode head) {
-        LinkedListNode slow = head;
-        LinkedListNode fast = head;
+        LinkedListNode p1 = head; // Fast pointer
+        LinkedListNode p2 = head; // Slow pointer
 
-        while (fast != null && fast.next !=null){
-            slow = slow.next;
-            fast = fast.next.next; // moves at 2x speed
-            if(slow == fast) {
-                break;
-            }
+        while (p1 != null && p1.next != null) {
+            p1 = p1.next.next; // moves at 2x speed
+            p2 = p2.next;
+            if (p1 == p2) break;
         }
 
         // Error check: there is not meeting point so no loop
-        if(fast.next == null) {
-            return;
-        }
+        if (p1.next == null) return;
 
-        // Move slow to head
-        slow = head;
-        while (slow.next != fast.next){
-            slow = slow.next;
-            fast = fast.next;
+        // Move slow pointer to head
+        p2 = head;
+        while (p2.next != p1.next) {
+            p2 = p2.next;
+            p1 = p1.next;
         }
 
         // This is the starting of loop, dequeue it.
-        fast.next = null;
+        p1.next = null;
     }
 
 
-    public boolean containsLoop (LinkedListNode firstNode) {
+    public boolean containsLoop(LinkedListNode firstNode) {
 
         // start both runners at the beginning
         LinkedListNode slowRunner = firstNode;
         LinkedListNode fastRunner = firstNode;
 
         // until we hit the end of the list
-        while (fastRunner!=null && fastRunner.next != null) {
+        while (fastRunner != null && fastRunner.next != null) {
             slowRunner = slowRunner.next;
             fastRunner = fastRunner.next.next;
 
             // case: fastRunner is about to "lap" slowRunner
-            if(fastRunner == slowRunner) {
+            if (fastRunner == slowRunner) {
                 return true;
             }
         }
@@ -72,18 +68,18 @@ public class LoopDetection {
         LinkedListNode fastRunner = firstNode;
 
         // until we hit the end of the list
-        while (fastRunner!=null && fastRunner.next != null) {
+        while (fastRunner != null && fastRunner.next != null) {
             slowRunner = slowRunner.next;
             fastRunner = fastRunner.next.next;
 
             // case: fastRunner is about to "lap" slowRunner
-            if(fastRunner == slowRunner) {
+            if (fastRunner == slowRunner) {
                 break;
             }
         }
 
         // Error check: there is not meeting point so no loop
-        if(fastRunner.next == null) {
+        if (fastRunner.next == null) {
             return null;
         }
 
@@ -100,9 +96,6 @@ public class LoopDetection {
 
         return fastRunner;
     }
-
-
-
 
 
     @Test
@@ -127,14 +120,14 @@ public class LoopDetection {
 
 
     void print(LinkedListNode node) {
-        if(containsLoop(node)) {
+        if (containsLoop(node)) {
             System.out.println("Loop exist at " + findLoopBeginning(node).data);
             return;
         }
 
         System.out.print("LinkedList = ");
         while (node != null) {
-            System.out.print( node.data + " -> " );
+            System.out.print(node.data + " -> ");
             node = node.next;
         }
     }

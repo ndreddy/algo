@@ -18,20 +18,20 @@ public class FindKthToLastNode {
      * @return
      */
     public static LinkedListNode findKthToLastNode(LinkedListNode head, int k) {
-        LinkedListNode p1 = head;
-        LinkedListNode p2 = head;
+        LinkedListNode p1 = head; // Fast pointer
+        LinkedListNode p2 = head; // Slow pointer
 
-		/* Walk fast k nodes from the head */
+		/* Walk fast pointer k nodes from the head */
         for (int i = 0; i < k; i++) {
-            if (p2 == null) return null; // Out of bounds
-            p2 = p2.next;
+            if (p1 == null) return null; // Out of bounds
+            p1 = p1.next;
         }
 
 		/* Move them at the same pace. When fast hits the end,
          * slow will be at the kth element. */
-        while (p2 != null) {
-            p2 = p2.next;
+        while (p1 != null) {
             p1 = p1.next;
+            p2 = p2.next;
         }
         return p1;
     }

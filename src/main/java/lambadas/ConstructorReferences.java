@@ -1,37 +1,59 @@
 package lambadas;
 
-import java.util.*;
-import java.util.stream.*;
+import javafx.scene.control.Button;
+import javafx.stage.Stage;
 
-import javafx.scene.*;
-import javafx.scene.control.*;
-import javafx.scene.layout.*;
-import javafx.scene.text.*;
-import javafx.stage.*;
+import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class ConstructorReferences {
    public void start(Stage stage) {
       List<String> labels = Arrays.asList("Ok", "Cancel", "Yes", "No", "Maybe");
-      Stream<Button> stream = labels.stream().map(Button::new);
-      List<Button> buttons = stream.collect(Collectors.toList());
+      List<Button> buttonList = labels.stream().map(Button::new).collect(Collectors.toList());
 
-      System.out.println(buttons);
+      Button[] buttonArray = labels.stream().map(Button::new).toArray(Button[]::new);
 
-      stream = labels.stream().map(Button::new);
-      Object[] buttons2 = stream.toArray();
-      System.out.println(buttons2.getClass());
+   }
 
-      // The following generates a ClassCastException
-      // stream = labels.stream().map(Button::new);
-      // Button[] buttons3 = (Button[]) stream.toArray();
+   @FunctionalInterface
+   public interface Decoder {
+      String decode(byte [] msgBody);
+   }
 
-      stream = labels.stream().map(Button::new);
-      Button[] buttons4 = stream.toArray(Button[]::new);
 
-      final double rem = Font.getDefault().getSize();
-      HBox box = new HBox(0.8 * rem); 
-      box.getChildren().addAll(buttons4);
-      stage.setScene(new Scene(box));
-      stage.show();      
+   static class OpenConf implements Decoder {
+
+      @Override
+      public String decode(byte[] msgBody) {
+         System.out.println("OpenConf Message Decoded");
+         return "OpenConf Message Decoded";
+      }
+   }
+
+   public enum  MessageType {
+
+      //Behind the scenes, the MessageType constructor receives an object of some class that
+      //implements Decoder interface.
+      // Invoking the decode method on that object executes
+      //the body of the lambda expression.
+      OPEN_CONF(4, (byte[] msgBody) -> {
+         return new OpenConf().decode(msgBody);
+      });
+
+      private final int msgId;
+      private final Decoder decoder;
+
+      MessageType(int msgId, Decoder decoder) {
+         this.msgId = msgId;
+         this.decoder = decoder;
+      }
+   }
+
+
+   public static void main(String[] args) {
+      // Got openConf message, decode it.
+      MessageType.OPEN_CONF.decoder.decode(new byte[1]);
    }
 }
+

@@ -7,6 +7,9 @@ import javafx.stage.Stage;
 import java.util.Arrays;
 
 public class MethodReferences {
+
+
+
    public void start(Stage stage) {
       String[] strings = "Mary had a little lamb".split(" ");
 
