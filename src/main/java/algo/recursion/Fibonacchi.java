@@ -89,7 +89,7 @@ public class Fibonacchi {
 
 
     public static void main(String args[]) {
-        int n = 3;
+        int n = 6;
         System.out.println("fibA - " + fibA(n));
         System.out.println("fibB - " + fibB(n));
         System.out.println("fibC - " + fibC(n));

@@ -1,4 +1,4 @@
-package streams;
+package algo.mathpuzzle;
 
 import java.util.stream.IntStream;
 import java.util.stream.Stream;

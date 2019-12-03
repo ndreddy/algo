@@ -1,10 +1,14 @@
 package streams;
 
+import org.junit.Test;
+
 import java.io.*;
 import java.math.BigInteger;
 import java.nio.charset.*;
 import java.nio.file.*;
 import java.util.*;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.ConcurrentMap;
 import java.util.regex.Pattern;
 import java.util.stream.*;
 
@@ -117,5 +121,19 @@ public class WordsCount {
         List<Character> result = new ArrayList<>();
         for (char c : s.toCharArray()) result.add(c);
         return result.stream();
+    }
+
+    @Test
+    public void isSkillValid() {
+        ConcurrentMap<String, Set<Integer>> agentSkillMap = new ConcurrentHashMap<>();
+        Set<Integer> skills = new HashSet<Integer>();
+        skills.add(1234);
+        skills.add(2345);
+        skills.add(3456);
+        agentSkillMap.put("agent1", skills);
+        agentSkillMap.put("agent2", skills);
+        Stream<Set<Integer>> stream = agentSkillMap.values().parallelStream().filter(e -> e.contains(Integer.valueOf(1234)));
+        Optional<Set<Integer>> opt = stream.findAny();
+        boolean result = opt.isPresent();
     }
 }

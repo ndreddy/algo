@@ -17,3 +17,16 @@
                  .filter(Files::exists)
                  .findFirst();
      
+public boolean isSkillValid(String skillExtension) {
+    Map<String,Set<Integers> agentsSkillsMap;
+       return agentsSkillsMap.values().stream().filter(e -> e.contains(skillExtension)).findAny().isPresent();
+    }
+    
+    public int getNumberInQueue(SkillGroup skillGroup) {
+            return skillStats.entrySet().stream()
+                    .filter(entry -> entry.getKey().getSkillExtension().equals(skillGroup.getSkillExtension()))
+                    .mapToInt(entry -> entry.getValue().getCallsQNow())
+                    .sum();
+        }
+        
+        
