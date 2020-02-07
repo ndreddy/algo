@@ -8,21 +8,29 @@ import static streams.GroceryTransaction.Tx.GROCERY;
 
 public class GroceryTransaction {
 
-    // find all transactions of type grocery and return a list of transaction IDs sorted in decreasing order of transaction value.
-
-    public List<Integer> getHighValueGrocTxs(List<Transaction> transactions) {
-        return transactions.stream()
-                        .filter(t -> t.getType() == GROCERY)
-                        .sorted(Comparator.comparing(Transaction::getValue).reversed())
-                        .map(Transaction::getId)
-                        .collect(toList());
-
-    }
-
     public enum Tx {
         GROCERY, MONDAY, TUESDAY, WEDNESDAY,
         THURSDAY, FRIDAY, SATURDAY
     }
+
+    //
+
+    /**
+     * find all transactions of type grocery and return a list of transaction IDs
+     * sorted in decreasing order of transaction value.
+     *
+     * @param transactions
+     * @return
+     */
+    public List<Integer> getHighValueGrocTxs(List<Transaction> transactions) {
+        return transactions.stream()
+                .filter(t -> t.getType() == GROCERY)
+                .sorted(Comparator.comparing(Transaction::getValue).reversed())
+                .map(Transaction::getId)
+                .collect(toList());
+
+    }
+
 
     public class Transaction {
 
