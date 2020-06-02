@@ -1,20 +1,7 @@
 package lambadas;
 
-import javafx.scene.control.Button;
-import javafx.stage.Stage;
-
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class ConstructorReferences {
-   public void start(Stage stage) {
-      List<String> labels = Arrays.asList("Ok", "Cancel", "Yes", "No", "Maybe");
-      List<Button> buttonList = labels.stream().map(Button::new).collect(Collectors.toList());
 
-      Button[] buttonArray = labels.stream().map(Button::new).toArray(Button[]::new);
-
-   }
 
    @FunctionalInterface
    public interface Decoder {

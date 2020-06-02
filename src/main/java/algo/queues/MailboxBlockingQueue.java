@@ -1,4 +1,4 @@
-package threads;
+package algo.queues;
 
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;

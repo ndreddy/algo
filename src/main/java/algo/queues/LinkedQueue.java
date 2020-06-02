@@ -1,8 +1,8 @@
-package algo.stackqueue;
+package algo.queues;
 
 import java.util.NoSuchElementException;
 
-public class MyQueue<T> {
+public class LinkedQueue<T> {
     private static class QueueNode<T> {
         private T data;
         private QueueNode<T> next;
@@ -15,18 +15,17 @@ public class MyQueue<T> {
     private QueueNode<T> first;
     private QueueNode<T> last;
 
-    public void add(T item) {
+    public void enqueue(T item) {
         QueueNode<T> t = new QueueNode<T>(item);
-        if (last != null) {
-            last.next = t;
-        }
-        last = t;
         if (first == null) {
-            first = last;
+            first = last = t;
+        } else {
+            last.next = t;
+            last = t;
         }
     }
 
-    public T remove() {
+    public T dequeue() {
         if (first == null) throw new NoSuchElementException();
         T data = first.data;
         first = first.next;
@@ -44,4 +43,6 @@ public class MyQueue<T> {
     public boolean isEmpty() {
         return first == null;
     }
+
+
 }

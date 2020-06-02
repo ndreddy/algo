@@ -1,15 +1,19 @@
-package algo.mathpuzzle;
+package streams;
 
+import java.util.function.IntPredicate;
+import java.util.function.Predicate;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
 public class PrimeNumber {
 
     public static boolean isPrime(final int n) {
+       IntPredicate isDivisible = divisor -> n % divisor == 0;
 
         return (n > 1) &&
                 IntStream.range(2, n)
-                        .noneMatch(i -> n % i == 0);
+                        .noneMatch(isDivisible);
+//                        .noneMatch(i -> n % i == 0);
 
     }
 
@@ -44,5 +48,14 @@ public class PrimeNumber {
 
         System.out.println("is Prime? 5 " + isPrime(5));
         System.out.println("compute: " + compute(5, 3) );
+
+        IntStream.iterate(1, n -> n + 1)
+                // args[0] - number to start with
+                .skip(Integer.parseInt(args[0]))
+                // args[1] - number of candidates to check
+                .limit(Integer.parseInt(args[1]))
+                .filter(PrimeNumber::isPrimeNum)
+                .forEach(System.out::println);
     }
+
 }

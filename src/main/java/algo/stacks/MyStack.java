@@ -1,4 +1,4 @@
-package algo.stackqueue;
+package algo.stacks;
 
 /**
  * Created by ndreddy on 14/09/17.

@@ -1,8 +1,5 @@
 package lambadas;
 
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
-
 import java.util.Comparator;
 import java.util.concurrent.Callable;
 
@@ -27,7 +24,7 @@ public class Lambdas {
         // You can't do this with Runnable as Thread.sleep throws exception
         Callable<Void> sleep = () -> {Thread.sleep(1000); return null;};
 
-        EventHandler<ActionEvent> listener = e -> System.out.println(e.getTarget());
+//        EventHandler<ActionEvent> listener = e -> System.out.println(e.getTarget());
 
         // Instead of (e) -> or (ActionEvent e) ->
         //  map.forEach((key, value) -> System.out.println(key + ":" + value));
