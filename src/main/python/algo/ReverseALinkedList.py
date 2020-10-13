@@ -3,14 +3,13 @@ import unittest
 
 def reverse(head):
     current = head
-    next = None
     prev = None
 
     while current:
-        next = current.next
+        nxt = current.next
         current.nxt = prev
         prev = current
-        current = next
+        current = nxt
 
     return prev
 
@@ -33,6 +32,6 @@ class TestReverse(unittest.TestCase):
         b.next = c
         self.assertEqual(reverse(a), c)
 
+
 if __name__ == '__main__':
     unittest.main()
-

@@ -1,9 +1,9 @@
-package algo.recursion;
+package algo.mathpuzzle;
 
 /**
  * 0, 1, 1, 2, 3, 5, 8, 13, 21,
  */
-public class FibonacciD {
+public class Fibonacci {
     public static int fibonacci(int n) {
         if (n == 0) return 0;
         int a = 0;
