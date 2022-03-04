@@ -1,5 +1,7 @@
 # Code compiled by Maven
 *target*
+*classes*
+*venv*
 
 # Eclipse project files
 *.classpath*
@@ -18,3 +20,5 @@ out/
 
 # Mac OS X Finder metadata files
 *.DS_Store
+/Pipfile
+/Pipfile.lock

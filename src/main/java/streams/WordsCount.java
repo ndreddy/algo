@@ -1,5 +1,7 @@
 package streams;
 
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import java.io.*;
@@ -13,6 +15,9 @@ import java.util.regex.Pattern;
 import java.util.stream.*;
 
 public class WordsCount {
+
+
+
     public static void main(String[] args) throws IOException {
 
         String contents = new String(Files.readAllBytes(
@@ -132,7 +137,8 @@ public class WordsCount {
         skills.add(3456);
         agentSkillMap.put("agent1", skills);
         agentSkillMap.put("agent2", skills);
-        Stream<Set<Integer>> stream = agentSkillMap.values().parallelStream().filter(e -> e.contains(Integer.valueOf(1234)));
+        Stream<Set<Integer>> stream = agentSkillMap.values().parallelStream()
+                .filter(e -> e.contains(Integer.valueOf(1234)));
         Optional<Set<Integer>> opt = stream.findAny();
         boolean result = opt.isPresent();
     }
