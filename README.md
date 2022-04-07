@@ -5,12 +5,14 @@
 * [Hacker Rank](https://www.hackerrank.com) 
 * [Interview Bit](https://www.interviewbit.com)
 * [Interview Cake](https://www.interviewcake.com)
+* [Interview Cake Solutions - Python](https://github.com/jerryasher-challenges/challenge-interviewcake)
 * [Project Euler](https://projecteuler.net) 
 * [Exercism](http://exercism.io)
 * [LeetCode](https://leetcode.com)
 * [Coderbyte](https://www.coderbyte.com)
 * [Geeks for Geeks](https://practice.geeksforgeeks.org)
 * [Daily Coding Problem](https://www.dailycodingproblem.com)
+* [Daily Coding Problem Solutions](https://github.com/ruppysuppy/Daily-Coding-Problem-Solutions)
 * [Interviewing.io](https://www.interviewing.io)
 * [Pramp](https://www.pramp.com)
 * [AlgoExpert](https://www.algoexpert.io)
@@ -31,6 +33,7 @@
     * **VisuAlgo** by Steven Halim https://visualgo.net
     * **Sorting Algorithms** by Carlo Zapponi https://www.sorting.at
     * **Pathfinding Algorithms Visualizer** by Clement Mihailescu https://github.com/clementmihailescu/Pathfinding-Visualizer
+    * **Sorting** https://github.com/khanhnamle1994/technical-interview-prep#sorting
 
 ## Systems
 
